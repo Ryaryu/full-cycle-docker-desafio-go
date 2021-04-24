@@ -3,7 +3,7 @@ FROM golang:alpine as base
 WORKDIR /app/user
 
 COPY code/ .
-RUN CGO_ENABLED=0 go install -ldflags '-extldflags "-static"' -tags timetzdata
+RUN CGO_ENABLED=0 go install -ldflags="-s -w" -tags timetzdata
 RUN ls -l /go/bin
 
 FROM scratch
